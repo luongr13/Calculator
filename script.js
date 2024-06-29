@@ -1,35 +1,45 @@
-function setScreen(target) {
+function add(x, y) {
+    return ((Number(x) + Number(y)).toPrecision(15) / 1).toString();
+}
 
-    if (target.id === 'clear') { 
-        arr = [];
-        return '0';
-    }
+function subtract(x, y) {
+    return ((Number(x) - Number(y)).toPrecision(15) / 1).toString();
+}
 
-    if (arr.length >= 12) { 
-        return "error: number too large"; 
-    }
+function multiply(x, y) {
+    return ((Number(x) * Number(y)).toPrecision(15) / 1).toString();
+}
 
-    if (target.className === 'number' && arr.length === 0) {
-        arr.push(target.innerText);
-        return target.innerText;
-    }
+function divide(x, y) {
+    if (y === '0') return NaN;
+    return ((Number(x) / Number(y)).toPrecision(15) / 1).toString();
+}
 
-    if (target.className == 'number') {
-        arr.push(target.innerText);
-        return screen.innerText + target.innerText;
-
+function operate(x, y, operator) {
+    switch(operator) {
+        case '+':
+            return add(x, y);
+        case '-':
+            return subtract(x, y);
+        case '*':
+            return multiply(x, y);
+        case '÷':
+            return divide(x, y);
     }
 }
 
-arr = [];
-left_op = 1;
-right_op = 1;
-operation = '';
 
-container_div = document.querySelector('.container');
-screen = document.querySelector("#screen");
 
-container_div.addEventListener('click', e => {
-    screen.innerText = setScreen(e.target); 
-});
+// let arr = [];
+// let op1;
+// let op2;
+// let operator;
+
+const container_div = document.querySelector('.container');
+const screen = document.querySelector("#screen");
+
+// 
+// container_div.addEventListener('click', e => {
+//     screen.innerText = setScreen(e.target); 
+// });
 
