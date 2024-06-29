@@ -56,7 +56,7 @@ body {
 .outer {
     border: solid black 1px;
     border-radius: 10%;
-    width: 25vw;
+    width: 30vw;
     height: 65vh;
     display: flex;
 }

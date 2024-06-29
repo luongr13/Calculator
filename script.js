@@ -1,28 +1,35 @@
 function setScreen(target) {
+
     if (target.id === 'clear') { 
-        screen_container = [];
+        arr = [];
         return '0';
     }
 
-    if (screen_container.length >= 12) { 
+    if (arr.length >= 12) { 
         return "error: number too large"; 
     }
 
-    if (target.className === 'number' && screen_container.length < 12) {
-        return screen_container.length === 0 ? 
-        target.innerText :
-        screen.innerText + target.innerText;
+    if (target.className === 'number' && arr.length === 0) {
+        arr.push(target.innerText);
+        return target.innerText;
+    }
+
+    if (target.className == 'number') {
+        arr.push(target.innerText);
+        return screen.innerText + target.innerText;
+
     }
 }
 
-screen_container = [];
+arr = [];
+left_op = 1;
+right_op = 1;
+operation = '';
 
 container_div = document.querySelector('.container');
 screen = document.querySelector("#screen");
 
 container_div.addEventListener('click', e => {
-    text = setScreen(e.target);
-    screen.innerText = text; 
-    screen_container.push(text);
+    screen.innerText = setScreen(e.target); 
 });
 
