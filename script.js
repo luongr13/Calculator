@@ -72,7 +72,7 @@ function setScreen(target) {
     } else if (target.id === 'clear') {
         screen.innerText = '0';
         screen_txt = '';
-        !right_op ? left_op = null : right_op = null;
+        !operator? left_op = null : right_op = null;
     } else if (target.className === 'number') {
         screen.innerText = getNumber(target);
     } else if (target.className === 'operator') {
@@ -92,6 +92,6 @@ const screen = document.querySelector("#screen");
 
 container_div.addEventListener('click', e => {
     setScreen(e.target);
-    console.log(left_op, right_op);
+    console.log(left_op, operator, right_op);
 });
 
