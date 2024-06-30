@@ -61,6 +61,18 @@ function getEquivalent(target) {
     return left_op;
 }
 
+function getNegation(target) {
+    if (!left_op && !right_op) return screen.innerText;
+
+    if (!operator) {
+        left_op = (-left_op).toString();
+        return left_op;
+    } else {
+        right_op = (-right_op).toString();
+        return right_op;
+    }
+}
+
 
 function setScreen(target) {
     if (target.id === 'ac') {
@@ -79,6 +91,8 @@ function setScreen(target) {
         screen.innerText = getOperator(target);
     } else if (target.id === 'equal') {
         screen.innerText = getEquivalent(target);
+    } else if (target.id === 'negate') {
+        screen.innerText = getNegation(target);
     }
 }
 
