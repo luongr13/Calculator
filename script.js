@@ -61,7 +61,7 @@ function getEquivalent(target) {
     return left_op;
 }
 
-function getNegation(target) {
+function getNegation() {
     if (!left_op && !right_op) return screen.innerText;
 
     if (!operator) {
@@ -73,6 +73,17 @@ function getNegation(target) {
     }
 }
 
+function getPercentage(target) {
+    if (!left_op && !right_op) return screen.innerText;
+
+    if (!operator) {
+        left_op = (left_op / 100).toString();
+        return left_op;
+    } else {
+        right_op = (right_op / 100).toString()
+        return right_op;
+    }
+}
 
 function setScreen(target) {
     if (target.id === 'ac') {
@@ -92,7 +103,9 @@ function setScreen(target) {
     } else if (target.id === 'equal') {
         screen.innerText = getEquivalent(target);
     } else if (target.id === 'negate') {
-        screen.innerText = getNegation(target);
+        screen.innerText = getNegation();
+    } else if (target.id === 'percent') {
+        screen.innerText = getPercentage();
     }
 }
 
