@@ -11,7 +11,10 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
-    if (y === '0') return NaN;
+    if (y === '0') {
+        screen_txt = '';
+        return NaN;
+    }
     return ((Number(x) / Number(y)).toPrecision(13) / 1).toString();
 }
 
@@ -29,7 +32,7 @@ function operate(x, y, operation) {
 }
 
 function getNumber(target) {
-    if (screen.innerText.length >= 15) return 'error: number is too large';
+    if (screen_txt.length >= 15) return 'error: number is too large';
 
     screen_txt += target.innerText;
     operator === null ? left_op = screen_txt : right_op = screen_txt;
@@ -96,11 +99,11 @@ function setScreen(target) {
         screen.innerText = '0';
         screen_txt = '';
         !operator? left_op = null : right_op = null;
-    } else if (target.className === 'number') {
+    } else if (target.className.includes('number')) {
         screen.innerText = getNumber(target);
-    } else if (target.className === 'operator') {
+    } else if (target.className.includes('operator')) {
         screen.innerText = getOperator(target);
-    } else if (target.id === 'equal') {
+    } else if (target.id ==='equal') {
         screen.innerText = getEquivalent(target);
     } else if (target.id === 'negate') {
         screen.innerText = getNegation();
