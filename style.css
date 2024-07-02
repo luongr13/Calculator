@@ -101,12 +101,13 @@ button:hover {
     justify-content: flex-end;
     align-items: center;
     border: solid #a7bcb9 3px;
+    background: white;
     border-radius: 10px;
 }
 
 #screen {
     color: black;
-    margin: 0.5em 0.25em;
+    margin: 0.5em;
     /* border: solid red 1px; */
     font-size: 1.25em;
     text-wrap: nowrap;
