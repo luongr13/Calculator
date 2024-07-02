@@ -1,13 +1,13 @@
 function add(x, y) {
-    return ((Number(x) + Number(y)).toPrecision(13) / 1).toString();
+    return ((Number(x) + Number(y)).toPrecision(10) / 1).toString();
 }
 
 function subtract(x, y) {
-    return ((Number(x) - Number(y)).toPrecision(13) / 1).toString();
+    return ((Number(x) - Number(y)).toPrecision(10) / 1).toString();
 }
 
 function multiply(x, y) {
-    return ((Number(x) * Number(y)).toPrecision(13) / 1).toString();
+    return ((Number(x) * Number(y)).toPrecision(10) / 1).toString();
 }
 
 function divide(x, y) {
@@ -15,7 +15,7 @@ function divide(x, y) {
         screen_txt = '';
         return NaN;
     }
-    return ((Number(x) / Number(y)).toPrecision(13) / 1).toString();
+    return ((Number(x) / Number(y)).toPrecision(10) / 1).toString();
 }
 
 function operate(x, y, operation) {
@@ -31,16 +31,22 @@ function operate(x, y, operation) {
     }
 }
 
-function getNumber(target) {
-    if (screen_txt.length >= 15) return 'error: number is too large';
+function limitText(string) {
+    if (string.length >= 17) { 
+        screen_txt = '';
+        string = 'number is too large';
+    }
+    return string;
+}
 
+function getNumber(target) {
     screen_txt += target.innerText;
     operator === null ? left_op = screen_txt : right_op = screen_txt;
-    return screen_txt;
+    return limitText(screen_txt);
 }
 
 function getOperator(target) {
-    if (!left_op) return screen.innerText;
+    if (!left_op || screen_txt == '') return screen.innerText;
 
     screen_txt = '';
     if (operator === null) {
